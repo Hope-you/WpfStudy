@@ -5,23 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow" Height="800" Width="1000">
+    <Window.Resources>
+        <Style x:Key="BaseStyle" TargetType="Button">
+            <Setter Property="Background" Value="DarkSlateGray"></Setter>
+        </Style>
+        <!--给Button类型声明样式
+            1. 如果不声明x:Key="键名" 默认就是全局样式
+            2. 样式可以继承 用BaseOn
+        -->
+        <Style TargetType="Button" x:Key="style1" BasedOn="{StaticResource BaseStyle}">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Foreground" Value="OrangeRed"></Setter>
+            <Setter Property="Content" Value="Hello Style"></Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <!--定义 两行-->
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <!--定义两列-->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <!--给列添加border-->
-        <Border Background="#f44d21" Margin="10"></Border>
-        <Border Background="#7eb900" Grid.Column="1" Margin="10"></Border>
 
-        <Border Background="#00a4ee" Grid.Row="1" Grid.Column="0" Margin="10"></Border>
-        <Border Background="#fdb602" Grid.Row="1" Grid.Column="1" Margin="10"></Border>
+        <!--padding内边距 margin外边距-->
+        <Button Margin="40" Content="Hello WPF" FontSize="50"/>
+        <Button Grid.Column="1"  Content="Hello WPF" Width="200" Height="40" Padding="15"/>
+
+        <!--text和content属性不一样  content是复杂对象-->
+        <TextBlock>
+            <TextBlock.Text>
+                123123
+            </TextBlock.Text>
+        </TextBlock>
+
+        <StackPanel Grid.Column="2">
+            <!--引用定义的样式 可以复用-->
+            <Button Style="{StaticResource style1}"></Button>
+            <Button Style="{StaticResource style1}"></Button>
+            <Button Style="{StaticResource style1}"></Button>
+            <Button Style="{StaticResource style1}"></Button>
+        </StackPanel>
+
+
+
     </Grid>
 </Window>
