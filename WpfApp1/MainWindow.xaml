@@ -5,23 +5,62 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
-    <Grid>
-        <!--定义 两行-->
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <!--定义两列-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <!--给列添加border-->
-        <Border Background="#f44d21" Margin="10"></Border>
-        <Border Background="#7eb900" Grid.Column="1" Margin="10"></Border>
+        Title="MainWindow" Height="400" Width="400">
+    <Window.Resources>
+        <Style x:Key="Style1" TargetType="TextBox">
+            <Setter Property="Background" Value="CadetBlue"></Setter>
+            <Style.Triggers>
+                <!--这行是条件-->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <!--这行是条件触发后两个新的样式-->
+                    <Setter Property="Foreground" Value="AliceBlue"></Setter>
+                    <Setter Property="FontSize" Value="10"></Setter>
+                </Trigger>
 
-        <Border Background="#00a4ee" Grid.Row="1" Grid.Column="0" Margin="10"></Border>
-        <Border Background="#fdb602" Grid.Row="1" Grid.Column="1" Margin="10"></Border>
+
+                <!--满足多个条件才触发-->
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsMouseOver" Value="true"></Condition>
+                        <Condition Property="IsFocused"  Value="true"></Condition>
+                    </MultiTrigger.Conditions>
+
+                    <MultiTrigger.Setters>
+                        <Setter Property="Background" Value="OrangeRed"></Setter>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+
+                <!--数据触发器 当数据等于123的时候触发Setter-->
+                <DataTrigger Binding="{Binding RelativeSource={RelativeSource Mode=Self},Path=Text}" Value="123">
+                    <Setter Property="Background" Value="Yellow"></Setter>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+ 
+        <Style x:Key="Style2" TargetType="TextBox" BasedOn="{StaticResource Style1}">
+            <Setter Property="Width" Value="100"></Setter>
+            <Setter Property="Height" Value="40"></Setter>
+            <Setter Property="Text" Value="Hello WPF"></Setter>
+            <Setter Property="FontSize" Value="5"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <!--触发器  类型
+        Trigger
+        MutiTrigger
+        DataTrigger
+        MultiDataTrigger
+        EventTrigger
+        -->
+        <StackPanel  Orientation="Horizontal">
+            <TextBox Style="{StaticResource Style2}">
+                <TextBox.Triggers>
+                    <!--可以在这里写,但是格式好像不一样-->
+                </TextBox.Triggers>
+            </TextBox>
+            <TextBox  Style="{StaticResource Style2}"></TextBox>
+            <TextBox  Style="{StaticResource Style2}"></TextBox>
+            <TextBox  Style="{StaticResource Style2}"></TextBox>
+        </StackPanel>
     </Grid>
 </Window>
