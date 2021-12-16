@@ -1,0 +1,27 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="800">
+    <Grid>
+        <!--定义 两行-->
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--定义两列-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition ></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <!--给列添加border-->
+        <Border Background="#f44d21" Margin="10"></Border>
+        <Border Background="#7eb900" Grid.Column="1" Margin="10"></Border>
+
+        <Border Background="#00a4ee" Grid.Row="1" Grid.Column="0" Margin="10"></Border>
+        <Border Background="#fdb602" Grid.Row="1" Grid.Column="1" Margin="10"></Border>
+    </Grid>
+</Window>
