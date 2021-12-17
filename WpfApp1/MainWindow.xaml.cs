@@ -23,6 +23,22 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            List<Student> array = new List<Student>();
+            array.Add(new Student(){Name = "张三",Sex = "男"});
+            array.Add(new Student() { Name = "张4", Sex = "女" });
+            array.Add(new Student() { Name = "张5", Sex = "男" });
+            array.Add(new Student() { Name = "张6", Sex = "男" });
+            array.Add(new Student() { Name = "张7", Sex = "女" });
+            array.Add(new Student() { Name = "张8", Sex = "男" });
+            com.ItemsSource = array;
+            lb.ItemsSource = array;
         }
+    }
+
+    public class Student
+    {
+        public string  Name { get; set; }
+
+        public string  Sex { get; set; }
     }
 }

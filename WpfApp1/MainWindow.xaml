@@ -7,21 +7,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="800" Width="800">
     <Grid>
-        <!--定义 两行-->
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <!--定义两列-->
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition ></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <!--给列添加border-->
-        <Border Background="#f44d21" Margin="10"></Border>
-        <Border Background="#7eb900" Grid.Column="1" Margin="10"></Border>
 
-        <Border Background="#00a4ee" Grid.Row="1" Grid.Column="0" Margin="10"></Border>
-        <Border Background="#fdb602" Grid.Row="1" Grid.Column="1" Margin="10"></Border>
+        <ListBox x:Name="lb">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <!--里面就是一个容器-->
+                        <Image Source="login.png" Width="40" Height="40"></Image>
+                        <StackPanel Margin="20 0 0 0"  Orientation="Horizontal">
+                            <TextBlock Text="{Binding Name}" VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="---"  VerticalAlignment="Center"></TextBlock>
+                            <TextBlock Text="{Binding Sex}"  VerticalAlignment="Center"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ComboBox x:Name="com" Width="100" Height="40">
+            <ComboBox.ItemTemplate>
+                <!--数据模板-->
+                <DataTemplate>
+                    <StackPanel Orientation=" Horizontal">
+                        <TextBlock Text="{Binding Name}"></TextBlock>
+                        <TextBlock Text="---"></TextBlock>
+                        <TextBlock Text="{Binding Sex}"></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </Window>
