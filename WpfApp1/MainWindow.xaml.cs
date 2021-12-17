@@ -23,6 +23,8 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel(){Message = "我是后台实例化的业务类"};
         }
+        
     }
 }
